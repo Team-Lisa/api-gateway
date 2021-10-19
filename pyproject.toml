@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "api-gateway"
+version = "0.1.0"
+description = ""
+authors = ["matifonseca <matias.fonseca@mercadolibre.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+fastapi = "^0.68.1"
+uvicorn = "^0.15.0"
+pydantic = "^1.8.2"
+coverage = "^5.5"
+datadog = "^0.41.0"
+coveralls = "^3.2.0"
+requests-mock = "^1.9.3"
+
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
