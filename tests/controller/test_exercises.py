@@ -12,5 +12,16 @@ def test_get_all_exercises():
         m.register_uri('GET', url, json=json, status_code=200)
         response = Exercises.get_challenges()
 
-        assert response.status_code == 200
-        assert response.json() == json
+        assert response == json
+
+
+def test_get_lesson_exercises():
+    lesson_id = "l1"
+    url = Router.get_url(Router.EXERCISES_SERVICE, "lessons", lesson_id)
+
+    with requests_mock.Mocker() as m:
+        json = {"lessons": []}
+        m.register_uri('GET', url, json=json, status_code=200)
+        response = Exercises.get_lesson_exercises(lesson_id)
+
+        assert response == json
