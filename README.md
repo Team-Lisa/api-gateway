@@ -3,6 +3,10 @@
 [![.github/workflows/pipeline.yml](https://github.com/Team-Lisa/api-gateway/actions/workflows/pipeline.yml/badge.svg?branch=master)](https://github.com/Team-Lisa/api-gateway/actions/workflows/pipeline.yml)
 [![Coverage Status](https://coveralls.io/repos/github/Team-Lisa/api-gateway/badge.svg?branch=master)](https://coveralls.io/github/Team-Lisa/api-gateway?branch=master)
 
+## Env
+
+* Production: https://idiomaplay-gateway.herokuapp.com/
+
 ## Local Mode
 
 #### Requirements
