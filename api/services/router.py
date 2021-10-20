@@ -3,15 +3,23 @@ import os
 
 class Router:
     EXERCISES_SERVICE = "EXERCISE_SERVICE"
+    USER_SERVICES = "USER_SERVICE"
     TEST_URL = "http://test.com"
     BASE_URL = "BASE_URL"
     CHALLENGES = "challenges"
     LESSONS = "lessons"
-    SERVICES_INFORMATION={
+    SESSIONS = "sessions"
+    EXAMS = "exams"
+    SERVICES_INFORMATION = {
         EXERCISES_SERVICE: {
             BASE_URL: os.getenv("EXERCISE_BASE_URL", TEST_URL),
             CHALLENGES: "challenges",
-            LESSONS: "lessons/{}/exercises"
+            LESSONS: "lessons/{}/exercises",
+            EXAMS: "exams/{}/exercises"
+        },
+        USER_SERVICES: {
+            BASE_URL: os.getenv("USER_BASE_URL", TEST_URL),
+            SESSIONS: "sessions"
         }
     }
 

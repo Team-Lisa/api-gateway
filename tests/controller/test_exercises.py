@@ -5,7 +5,7 @@ from api.services.router import Router
 
 
 def test_get_all_exercises():
-    url = Router.get_url(Router.EXERCISES_SERVICE, "challenges")
+    url = Router.get_url(Router.EXERCISES_SERVICE, Router.CHALLENGES)
 
     with requests_mock.Mocker() as m:
         json = {"challenges": []}
@@ -16,12 +16,23 @@ def test_get_all_exercises():
 
 
 def test_get_lesson_exercises():
-    lesson_id = "l1"
-    url = Router.get_url(Router.EXERCISES_SERVICE, "lessons", lesson_id)
+    lesson_id = "L1"
+    url = Router.get_url(Router.EXERCISES_SERVICE, Router.LESSONS, lesson_id)
 
     with requests_mock.Mocker() as m:
         json = {"lessons": []}
         m.register_uri('GET', url, json=json, status_code=200)
         response = Exercises.get_lesson_exercises(lesson_id)
+
+        assert response == json
+
+def test_get_exam_exercises():
+    exam_id = "E1"
+    url = Router.get_url(Router.EXERCISES_SERVICE, Router.EXAMS, exam_id)
+
+    with requests_mock.Mocker() as m:
+        json = {"lessons": []}
+        m.register_uri('GET', url, json=json, status_code=200)
+        response = Exercises.get_exam_exercises(exam_id)
 
         assert response == json

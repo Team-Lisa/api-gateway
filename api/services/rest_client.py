@@ -8,8 +8,17 @@ class RestClient:
 
     @staticmethod
     def get(url):
+        response = requests.get(url)
+        return RestClient.handle_response(response)
+
+    @staticmethod
+    def post(url, json):
+        response = requests.post(url, json=json)
+        return RestClient.handle_response(response)
+
+    @staticmethod
+    def handle_response(response):
         try:
-            response = requests.get(url)
             status = response.status_code
 
             if status >= 500:
@@ -23,4 +32,3 @@ class RestClient:
             return json
         except JSONDecodeError:
             raise HTTPException(status_code=500, detail="internal server error")
-
