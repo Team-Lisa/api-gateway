@@ -1,12 +1,13 @@
 import uvicorn
 from fastapi import FastAPI
-from api.routes import helpers, exercises
+from api.routes import helpers, exercises, users
 
 app = FastAPI()
 
 
 app.include_router(helpers.router)
 app.include_router(exercises.router)
+app.include_router(users.router)
 
 
 if __name__ == "__main__":
