@@ -1,7 +1,7 @@
 # Api Gateway
 
-[![.github/workflows/pipeline.yml](https://github.com/Team-Lisa/python-service/actions/workflows/pipeline.yml/badge.svg?branch=master)](https://github.com/Team-Lisa/python-service/actions/workflows/pipeline.yml)
-[![Coverage Status](https://coveralls.io/repos/github/Team-Lisa/python-service/badge.svg)](https://coveralls.io/github/Team-Lisa/python-service)
+[![.github/workflows/pipeline.yml](https://github.com/Team-Lisa/api-gateway/actions/workflows/pipeline.yml/badge.svg?branch=master)](https://github.com/Team-Lisa/api-gateway/actions/workflows/pipeline.yml)
+[![Coverage Status](https://coveralls.io/repos/github/Team-Lisa/api-gateway/badge.svg?branch=master)](https://coveralls.io/github/Team-Lisa/api-gateway?branch=master)
 
 ## Local Mode
 
