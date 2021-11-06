@@ -10,8 +10,8 @@ class Gamification:
         return RestClient.get(url)
 
     @staticmethod
-    def get_trohpies(email):
-        url = Router.get_url(Router.GAMIFICATION_SERVICES, Router.TROPHIES,params={"email":email})
+    def get_trohpies():
+        url = Router.get_url(Router.GAMIFICATION_SERVICES, Router.TROPHIES)
         return RestClient.get(url)
 
     @staticmethod

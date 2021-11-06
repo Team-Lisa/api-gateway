@@ -20,6 +20,7 @@ class Router:
     FASTFORWARDS = "fastforwards"
     HISTORY = "history"
     CHALLENGE_COMPLETED = "challenge_completed"
+    USER_TROHPIES = "user_trophies"
     SERVICES_INFORMATION = {
         EXERCISES_SERVICE: {
             BASE_URL: os.getenv("EXERCISES_BASE_URL", TEST_URL),
@@ -34,7 +35,8 @@ class Router:
         GAMIFICATION_SERVICES: {
             BASE_URL: os.getenv("GAMIFICATIONS_BASE_URL", TEST_URL),
             USER_STATUS: "users",
-            TROPHIES:"trohpies",
+            TROPHIES:"trophies",
+            USER_TROHPIES:"users/trophies",
             STOREITEMS:"storeitems",
             POINTS: "points",
             MINUTES: "minutes",
@@ -55,10 +57,10 @@ class Router:
         if len(params) > 0:
             for param in params:
                 queryparams += param + "={}&".format(params[param])
-            queryparams = queryparams[:len(queryparams)-2]
+            queryparams = queryparams[:len(queryparams)-1]
         else:
             queryparams = ""
         if id is not None:
             endpoint = endpoint.format(id)
 
-        return "{}{}".format(base_url, endpoint)
+        return "{}{}{}".format(base_url, endpoint, queryparams)

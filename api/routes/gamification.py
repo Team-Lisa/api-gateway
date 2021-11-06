@@ -20,9 +20,9 @@ async def get_user_status(email: str = ""):
     return Gamification.get_user_status(email)
 
 
-@router.get("/trophies", status_code=201, response_model=TrophiesResponse)
-async def get_trophies(email: str = ""):
-    return Gamification.get_trohpies(email)
+@router.get("/trophies", status_code=201)
+async def get_trophies():
+    return Gamification.get_trohpies()
 
 
 @router.patch("/points", response_model=PointsResponse)
