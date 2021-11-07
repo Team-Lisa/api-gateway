@@ -44,12 +44,12 @@ async def update_user_lives(lives: LivesRequest,email: str = ""):
 async def update_user_fastforwards(amount: FastforwardsRequest,email: str = ""):
     return Gamification.update_user_fastforwards(email,amount)
 
-@router.patch("/challenges/{challenge_id/units/{unit_id}/lessons/{lesson_id}/results", response_model=PointsResponse)
+@router.patch("/challenges/{challenge_id}/units/{unit_id}/lessons/{lesson_id}/results", response_model=PointsResponse)
 async def update_history_lesson(points: PointsRequest, challenge_id: str, unit_id: str, lesson_id: str, email: str = ""):
     Gamification.update_history_lesson(challenge_id, unit_id, lesson_id, email)
     return Gamification.update_user_points(email, points)
 
-@router.patch("/challenges/{challenge_id/units/{unit_id}/exam", response_model=PointsResponse)
+@router.patch("/challenges/{challenge_id}/units/{unit_id}/exam", response_model=PointsResponse)
 async def update_history_exam(points: PointsRequest, challenge_id: str, unit_id: str, email: str = ""):
     Gamification.update_history_exam(challenge_id, unit_id, email)
     return Gamification.update_user_points(email, points)
