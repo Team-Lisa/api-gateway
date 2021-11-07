@@ -17,6 +17,11 @@ class RestClient:
         return RestClient.handle_response(response)
 
     @staticmethod
+    def patch(url, json):
+        response = requests.patch(url, json=json)
+        return RestClient.handle_response(response)
+
+    @staticmethod
     def handle_response(response):
         try:
             status = response.status_code
