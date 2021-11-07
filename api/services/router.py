@@ -42,8 +42,8 @@ class Router:
             MINUTES: "minutes",
             LIVES: "lives",
             FASTFORWARDS: "fastforwards",
-            HISTORY: "/users/history/challenges/{}/units/{}",
-            CHALLENGE_COMPLETED:"/users/history/challenges/{}"
+            HISTORY: "users/history/challenges/{}/units/{}",
+            CHALLENGE_COMPLETED:"users/history/challenges/{}"
 
         }
     }
@@ -60,7 +60,9 @@ class Router:
             queryparams = queryparams[:len(queryparams)-1]
         else:
             queryparams = ""
-        if id is not None:
-            endpoint = endpoint.format(id)
+        if id_1 is not None and id_1 is not None:
+            endpoint = endpoint.format(id_1,id_2)
+        elif id_1 is not None and id_2 is None:
+            endpoint = endpoint.format(id_1)
 
         return "{}{}{}".format(base_url, endpoint, queryparams)

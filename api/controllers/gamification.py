@@ -49,7 +49,7 @@ class Gamification:
     @staticmethod
     def update_challenge_completed(challenge_id, email):
         json = ""
-        url = Router.get_url(Router.GAMIFICATION_SERVICES, Router.HISTORY, challenge_id, {"email": email})
+        url = Router.get_url(Router.GAMIFICATION_SERVICES, Router.CHALLENGE_COMPLETED, id_1=challenge_id, params={"email": email})
         return RestClient.patch(url, json)
 
 
