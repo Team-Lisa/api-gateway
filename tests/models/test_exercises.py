@@ -27,7 +27,8 @@ def test_challenges_response():
     challenge = {
         "challenge_id": challenge_id,
         "units": units,
-        "name": name
+        "name": name,
+        "published": True
     }
 
     response = Challenges(
