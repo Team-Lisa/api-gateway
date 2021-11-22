@@ -8,8 +8,8 @@ router = APIRouter(tags=["Exercises"])
 
 
 @router.get("/challenges", response_model=Challenges)
-async def get_challenges():
-    return Exercises.get_challenges()
+async def get_challenges(published: str = None):
+    return Exercises.get_challenges(published)
 
 
 @router.get("/lessons/{lesson_id}/exercises", response_model=ExercisesResponse)

@@ -5,10 +5,15 @@ from api.services.router import Router
 class Exercises:
 
     @staticmethod
-    def get_challenges():
-        url = Router.get_url(Router.EXERCISES_SERVICE, Router.CHALLENGES)
-        return RestClient.get(url)
+    def get_challenges(published=None):
+        params = {}
 
+        if published is not None:
+            params = {"published": published}
+
+        url = Router.get_url(Router.EXERCISES_SERVICE, Router.CHALLENGES, params=params)
+        return RestClient.get(url)
+    
     @staticmethod
     def get_lesson_exercises(lesson_id):
         url = Router.get_url(Router.EXERCISES_SERVICE, Router.LESSONS, lesson_id)
