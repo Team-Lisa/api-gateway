@@ -23,3 +23,13 @@ class Exercises:
     def get_exam_exercises(exam_id):
         url = Router.get_url(Router.EXERCISES_SERVICE, Router.EXAMS, exam_id)
         return RestClient.get(url)
+
+    @staticmethod
+    def get_next_exercise_id():
+        url = Router.get_url(Router.EXERCISES_SERVICE, Router.EXERCISE_NEXT_ID)
+        return RestClient.get(url)
+
+    @staticmethod
+    def get_next_challenge_id():
+        url = Router.get_url(Router.EXERCISES_SERVICE, Router.CHALLENGE_NEXT_ID)
+        return RestClient.get(url)
