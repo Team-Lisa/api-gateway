@@ -55,3 +55,23 @@ def test_get_exam_exercises():
         response = Exercises.get_exam_exercises(exam_id)
 
         assert response == json
+
+def test_get_exercise_next_id():
+    url = Router.get_url(Router.EXERCISES_SERVICE, Router.EXERCISE_NEXT_ID)
+
+    with requests_mock.Mocker() as m:
+        json = {"next_exercise_id": "C1U1L1E2"}
+        m.register_uri('GET', url, json=json, status_code=200)
+        response = Exercises.get_next_exercise_id()
+
+        assert response == json
+
+def test_get_challenge_next_id():
+    url = Router.get_url(Router.EXERCISES_SERVICE, Router.CHALLENGE_NEXT_ID)
+
+    with requests_mock.Mocker() as m:
+        json = {"next_challenge_id": "C1U1L1E2"}
+        m.register_uri('GET', url, json=json, status_code=200)
+        response = Exercises.get_next_challenge_id()
+
+        assert response == json

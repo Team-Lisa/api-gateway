@@ -21,12 +21,16 @@ class Router:
     HISTORY = "history"
     CHALLENGE_COMPLETED = "challenge_completed"
     USER_TROHPIES = "user_trophies"
+    EXERCISE_NEXT_ID = "exercise_next_id"
+    CHALLENGE_NEXT_ID = "challenge_next_id"
     SERVICES_INFORMATION = {
         EXERCISES_SERVICE: {
             BASE_URL: os.getenv("EXERCISES_BASE_URL", TEST_URL),
             CHALLENGES: "challenges",
             LESSONS: "lessons/{}/exercises",
-            EXAMS: "exams/{}/exercises"
+            EXAMS: "exams/{}/exercises",
+            EXERCISE_NEXT_ID: "exercises/next",
+            CHALLENGE_NEXT_ID: "challenges/next"
         },
         USER_SERVICES: {
             BASE_URL: os.getenv("USERS_BASE_URL", TEST_URL),
