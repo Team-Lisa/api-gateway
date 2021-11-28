@@ -11,6 +11,7 @@ class Router:
     LESSONS = "lessons"
     SESSIONS = "sessions"
     EXAMS = "exams"
+    EXERCISES = "exercises"
     USER_STATUS = "user_status"
     TROPHIES = "trophies"
     STOREITEMS = "storeitems"
@@ -23,14 +24,19 @@ class Router:
     USER_TROHPIES = "user_trophies"
     EXERCISE_NEXT_ID = "exercise_next_id"
     CHALLENGE_NEXT_ID = "challenge_next_id"
+    UPDATE_CHALLENGE = "update_challenge"
+    UPDATE_EXERCISE = "update_exercise"
     SERVICES_INFORMATION = {
         EXERCISES_SERVICE: {
             BASE_URL: os.getenv("EXERCISES_BASE_URL", TEST_URL),
             CHALLENGES: "challenges",
             LESSONS: "lessons/{}/exercises",
             EXAMS: "exams/{}/exercises",
+            EXERCISES: "exercises",
             EXERCISE_NEXT_ID: "exercises/next",
-            CHALLENGE_NEXT_ID: "challenges/next"
+            CHALLENGE_NEXT_ID: "challenges/next",
+            UPDATE_CHALLENGE: "challenges/{}",
+            UPDATE_EXERCISE: "exercises/{}"
         },
         USER_SERVICES: {
             BASE_URL: os.getenv("USERS_BASE_URL", TEST_URL),
