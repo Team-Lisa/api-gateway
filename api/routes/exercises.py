@@ -1,25 +1,29 @@
 from fastapi import APIRouter
 
 from api.controllers.exercises import Exercises
+from api.models.requests.challenge import Challenge
+from api.models.requests.exercise import Exercise
+from api.models.responses.challenge import ChallengeResponse
 from api.models.responses.challenges import Challenges
+from api.models.responses.exercise import ExerciseResponse
 from api.models.responses.exercises import Exercises as ExercisesResponse
 
 router = APIRouter(tags=["Exercises"])
 
-@router.post("/challenges", status_code=201)
-async def create(challenge):
+@router.post("/challenges",response_model=ChallengeResponse, status_code=201)
+async def create(challenge: Challenge):
     return Exercises.create_challenge(challenge)
 
-@router.post("/exercises", status_code=201)
-async def create(exercise):
+@router.post("/exercises", response_model=ExerciseResponse, status_code=201)
+async def create(exercise: Exercise):
     return Exercises.create_exercise(exercise)
 
 @router.post("/challenges/{challenge_id}", status_code=201)
-async def edit_challenge(challenge_id: str, challenge):
+async def edit_challenge(challenge_id: str, challenge: Challenge):
     return Exercises.update_challenge(challenge_id, challenge)
 
 @router.post("/exercises/{exercise_id}", status_code=201)
-async def edit_exercise(exercise_id: str, exercise):
+async def edit_exercise(exercise_id: str, exercise: Exercise):
     return Exercises.update_exercise(exercise_id, exercise)
 
 @router.get("/challenges", response_model=Challenges)
