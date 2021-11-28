@@ -27,7 +27,7 @@ async def get_trophies():
 
 @router.patch("/points", response_model=PointsResponse)
 async def update_user_points(points: PointsRequest,email: str = ""):
-    return Gamification.update_user_points(email,points)
+    return Gamification.update_user_points(email,points.points)
 
 
 @router.patch("/minutes", response_model=WonTrophies)
@@ -46,13 +46,15 @@ async def update_user_fastforwards(amount: FastforwardsRequest,email: str = ""):
 
 @router.patch("/challenges/{challenge_id}/units/{unit_id}/lessons/{lesson_id}/results", response_model=WonTrophies)
 async def update_history_lesson(points: PointsRequest, challenge_id: str, unit_id: str, lesson_id: str, email: str = ""):
-    Gamification.update_history_lesson(challenge_id, unit_id, lesson_id, email)
-    return Gamification.update_user_points(email, points)
+    won_trophies = Gamification.update_history_lesson(challenge_id, unit_id, lesson_id, email, points.allExercisesLesson)
+    Gamification.update_user_points(email, points.points)
+    return won_trophies
 
 @router.patch("/challenges/{challenge_id}/units/{unit_id}/exam",response_model=WonTrophies)
 async def update_history_exam(points: PointsRequest, challenge_id: str, unit_id: str, email: str = ""):
-    Gamification.update_history_exam(challenge_id, unit_id, email)
-    return Gamification.update_user_points(email, points)
+    won_trophies = Gamification.update_history_exam(challenge_id, unit_id, email,points)
+    Gamification.update_user_points(email, points.points)
+    return won_trophies
 
 @router.patch("/challenges/{challenge_id}", response_model=WonTrophies)
 async def update_challenge_completed( challenge_id: str, email: str = ""):

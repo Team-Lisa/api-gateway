@@ -17,7 +17,8 @@ class Gamification:
     @staticmethod
     def update_user_points(email, points):
         url = Router.get_url(Router.GAMIFICATION_SERVICES, Router.POINTS,params={"email":email})
-        return RestClient.patch(url, points.dict())
+        points = {"points": points}
+        return RestClient.patch(url, points)
 
     @staticmethod
     def update_user_minutes(email, minutes):
@@ -35,14 +36,17 @@ class Gamification:
         return RestClient.patch(url, amount.dict())
 
     @staticmethod
-    def update_history_lesson(challenge_id, unit_id, lesson_id, email):
-        json = {"lesonIdCompleted":lesson_id}
+    def update_history_lesson(challenge_id, unit_id, lesson_id, email,allExercises):
+        json = {"lesonIdCompleted":lesson_id,
+                "allExercisesLesson":allExercises}
         url = Router.get_url(Router.GAMIFICATION_SERVICES,Router.HISTORY,challenge_id,unit_id,{"email":email})
         return RestClient.patch(url, json)
 
     @staticmethod
-    def update_history_exam(challenge_id, unit_id, email):
-        json = {"examCompleted": True}
+    def update_history_exam(challenge_id, unit_id, email,points):
+        json = {"examCompleted": True,
+                "allExercisesExam": points.allExercisesExam,
+                "time": points.time}
         url = Router.get_url(Router.GAMIFICATION_SERVICES, Router.HISTORY, challenge_id, unit_id, {"email": email})
         return RestClient.patch(url, json)
 
