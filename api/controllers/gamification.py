@@ -46,7 +46,8 @@ class Gamification:
     def update_history_exam(challenge_id, unit_id, email,points):
         json = {"examCompleted": True,
                 "allExercisesExam": points.allExercisesExam,
-                "time": points.time}
+                "time": points.time,
+                "unitCompleted": points.unitCompleted}
         url = Router.get_url(Router.GAMIFICATION_SERVICES, Router.HISTORY, challenge_id, unit_id, {"email": email})
         return RestClient.patch(url, json)
 
