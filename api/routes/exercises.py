@@ -6,6 +6,21 @@ from api.models.responses.exercises import Exercises as ExercisesResponse
 
 router = APIRouter(tags=["Exercises"])
 
+@router.post("/challenges", status_code=201)
+async def create(challenge):
+    return Exercises.create_challenge(challenge)
+
+@router.post("/exercises", status_code=201)
+async def create(exercise):
+    return Exercises.create_exercise(exercise)
+
+@router.post("/challenges/{challenge_id}", status_code=201)
+async def edit_challenge(challenge_id: str, challenge):
+    return Exercises.update_challenge(challenge_id, challenge)
+
+@router.post("/exercises/{exercise_id}", status_code=201)
+async def edit_exercise(exercise_id: str, exercise):
+    return Exercises.update_exercise(exercise_id, exercise)
 
 @router.get("/challenges", response_model=Challenges)
 async def get_challenges(published: str = None):
