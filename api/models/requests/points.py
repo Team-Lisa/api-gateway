@@ -8,3 +8,4 @@ class Points(BaseModel):
     allExercisesExam: Optional[bool] = None
     allExercisesLesson: Optional[bool] = None
     time: Optional[int] = None
+    unitCompleted: Optional[bool] = None
