@@ -1,6 +1,8 @@
 from api.controllers.exercises import Exercises
 import requests_mock
 
+from api.models.requests.challenge import Challenge
+from api.models.requests.exercise import Exercise
 from api.services.router import Router
 import json as JSON
 
@@ -84,14 +86,15 @@ def test_create_exercise():
         "question": "question_2",
         "options": ["a", "b", "adddd"],
         "correct_answer": "a",
-        "exercise_id": "C1U1L1E1"
     }
+    new_exercise = Exercise(lesson_id=exercise['lesson_id'], exercise_type=exercise['exercise_type'], question=exercise['question'], options=exercise['options'], correct_answer=exercise['correct_answer'])
+
     url = Router.get_url(Router.EXERCISES_SERVICE, Router.EXERCISES)
 
     with requests_mock.Mocker() as m:
         json = {"exercise": JSON.dumps(exercise)}
         m.register_uri('POST', url, json=json, status_code=201)
-        response = Exercises.create_exercise(JSON.dumps(exercise))
+        response = Exercises.create_exercise(new_exercise)
 
         assert response == json
 
@@ -102,12 +105,15 @@ def test_create_challenge():
         "id": "C1",
         "published": False
     }
+    new_challenge = Challenge(name=challenge['name'], units=challenge['units'],
+                            published=challenge['published'], id=challenge['id'])
+
     url = Router.get_url(Router.EXERCISES_SERVICE, Router.CHALLENGES)
 
     with requests_mock.Mocker() as m:
         json = {"challenge": JSON.dumps(challenge)}
         m.register_uri('POST', url, json=json, status_code=201)
-        response = Exercises.create_challenge(JSON.dumps(challenge))
+        response = Exercises.create_challenge(new_challenge)
 
         assert response == json
 
@@ -121,12 +127,15 @@ def test_update_exercise():
         "correct_answer": "a",
         "exercise_id": "C1U1L1E1"
     }
+    new_exercise = Exercise(lesson_id=exercise['lesson_id'], exercise_type=exercise['exercise_type'],
+                            question=exercise['question'], options=exercise['options'],
+                            correct_answer=exercise['correct_answer'])
     url = Router.get_url(Router.EXERCISES_SERVICE, Router.UPDATE_EXERCISE, exercise_id)
 
     with requests_mock.Mocker() as m:
         json = {"exercise": JSON.dumps(exercise)}
         m.register_uri('POST', url, json=json, status_code=201)
-        response = Exercises.update_exercise(exercise_id, JSON.dumps(exercise))
+        response = Exercises.update_exercise(exercise_id, new_exercise)
 
         assert response == json
 
@@ -138,11 +147,13 @@ def test_update_challenge():
         "id": "C1",
         "published": False
     }
+    new_challenge = Challenge(name=challenge['name'], units=challenge['units'],
+                              published=challenge['published'], id=challenge['id'])
     url = Router.get_url(Router.EXERCISES_SERVICE, Router.UPDATE_CHALLENGE, challenge_id)
 
     with requests_mock.Mocker() as m:
         json = {"challenge": JSON.dumps(challenge)}
         m.register_uri('POST', url, json=json, status_code=201)
-        response = Exercises.update_challenge(challenge_id, JSON.dumps(challenge))
+        response = Exercises.update_challenge(challenge_id, new_challenge)
 
         assert response == json

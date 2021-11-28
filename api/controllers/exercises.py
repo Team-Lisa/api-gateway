@@ -7,22 +7,22 @@ class Exercises:
     @staticmethod
     def create_challenge(challenge):
         url = Router.get_url(Router.EXERCISES_SERVICE, Router.CHALLENGES)
-        return RestClient.post(url, challenge)
+        return RestClient.post(url, challenge.dict())
 
     @staticmethod
     def create_exercise(exercise):
         url = Router.get_url(Router.EXERCISES_SERVICE, Router.EXERCISES)
-        return RestClient.post(url, exercise)
+        return RestClient.post(url, exercise.dict())
 
     @staticmethod
     def update_challenge(challenge_id, challenge):
         url = Router.get_url(Router.EXERCISES_SERVICE, Router.UPDATE_CHALLENGE, challenge_id)
-        return RestClient.post(url, challenge)
+        return RestClient.post(url, challenge.dict())
 
     @staticmethod
     def update_exercise(exercise_id, exercise):
         url = Router.get_url(Router.EXERCISES_SERVICE, Router.UPDATE_EXERCISE, exercise_id)
-        return RestClient.post(url, exercise)
+        return RestClient.post(url, exercise.dict())
 
     @staticmethod
     def get_challenges(published=None):
