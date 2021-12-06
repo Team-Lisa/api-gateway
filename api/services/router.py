@@ -5,6 +5,7 @@ class Router:
     EXERCISES_SERVICE = "EXERCISE_SERVICE"
     USER_SERVICES = "USER_SERVICE"
     GAMIFICATION_SERVICES = "GAMIFICATION_SERVICE"
+    METRICS_SERVICE = "METRICS_SERVICE"
     TEST_URL = "http://test.com/"
     BASE_URL = "BASE_URL"
     CHALLENGES = "challenges"
@@ -26,6 +27,7 @@ class Router:
     CHALLENGE_NEXT_ID = "challenge_next_id"
     UPDATE_CHALLENGE = "update_challenge"
     UPDATE_EXERCISE = "update_exercise"
+    TRACKS = "tracks"
     SERVICES_INFORMATION = {
         EXERCISES_SERVICE: {
             BASE_URL: os.getenv("EXERCISES_BASE_URL", TEST_URL),
@@ -55,6 +57,10 @@ class Router:
             HISTORY: "users/history/challenges/{}/units/{}",
             CHALLENGE_COMPLETED:"users/history/challenges/{}"
 
+        },
+        METRICS_SERVICE: {
+            TRACKS: "tracks",
+            BASE_URL: os.getenv("METRICS_BASE_URL", TEST_URL),
         }
     }
 
