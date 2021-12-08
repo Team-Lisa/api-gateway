@@ -27,7 +27,8 @@ class Router:
     CHALLENGE_NEXT_ID = "challenge_next_id"
     UPDATE_CHALLENGE = "update_challenge"
     UPDATE_EXERCISE = "update_exercise"
-    TRACKS = "tracks"
+    TRACKS = "tracks",
+    METRICS = "metrics"
     SERVICES_INFORMATION = {
         EXERCISES_SERVICE: {
             BASE_URL: os.getenv("EXERCISES_BASE_URL", TEST_URL),
@@ -60,6 +61,7 @@ class Router:
         },
         METRICS_SERVICE: {
             TRACKS: "tracks",
+            METRICS: "metrics",
             BASE_URL: os.getenv("METRICS_BASE_URL", TEST_URL),
         }
     }

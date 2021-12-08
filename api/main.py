@@ -1,6 +1,6 @@
 import uvicorn
 from fastapi import FastAPI
-from api.routes import helpers, exercises, users, gamification, tracks
+from api.routes import helpers, exercises, users, gamification, tracks, metrics
 from fastapi.middleware.cors import CORSMiddleware
 
 
@@ -19,6 +19,7 @@ app.include_router(exercises.router)
 app.include_router(users.router)
 app.include_router(gamification.router)
 app.include_router(tracks.router)
+app.include_router(metrics.router)
 
 
 if __name__ == "__main__":
