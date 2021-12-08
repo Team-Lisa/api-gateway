@@ -39,7 +39,7 @@ async def get_exercises_by_lesson_id(lesson_id: str):
 
 @router.get("/exams/{exam_id}/exercises", response_model=ExercisesResponse)
 async def get_exercises_by_lesson_id(exam_id: str):
-    return Exercises.get_lesson_exercises(exam_id)
+    return Exercises.get_exam_exercises(exam_id)
 
 @router.get("/exercises/next")
 async def get_next_exercise_id():
