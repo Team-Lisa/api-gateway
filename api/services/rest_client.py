@@ -30,7 +30,10 @@ class RestClient:
                 raise HTTPException(status_code=status, detail="internal server error")
             elif status >= 400:
                 json = response.json()
-                raise HTTPException(status_code=status, detail=json.get("message", "Not Found"))
+                message = json.get("message", "Not Found")
+                if "detail" in json:
+                    message = json.get("detail")
+                raise HTTPException(status_code=status, detail=message)
             else:
                 json = response.json()
 
